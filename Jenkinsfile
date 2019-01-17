@@ -33,7 +33,6 @@ pipeline {
             echo err
           }
         }
-        echo currentBuild.result
       }
     }
     stage('JDK-12') {
@@ -51,7 +50,6 @@ pipeline {
             echo err
           }
         }
-        echo currentBuild.result
       }
     }
     stage('JDK-13') {
@@ -69,7 +67,6 @@ pipeline {
             echo err
           }
         }
-        echo currentBuild.result
       }
     }
   }
