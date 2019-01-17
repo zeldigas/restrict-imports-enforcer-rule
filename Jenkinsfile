@@ -16,7 +16,7 @@ pipeline {
             echo err
           }
         }
-        echo currentBuild.result
+        return currentBuild.result
       }
     }
     stage('JDK-11') {
