@@ -19,7 +19,7 @@
 	<properties>
 		<coveralls.skip>false</coveralls.skip>
         
-        <version.under.test>0.16.0</version.under.test>
+        <version.under.test>0.17.0-SNAPSHOT</version.under.test>
 
 		<api.version>3.0.0-M2</api.version>
 		<maven.version>2.2.1</maven.version>
