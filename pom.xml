@@ -21,8 +21,6 @@
         
         <version.under.test>0.17.0-SNAPSHOT</version.under.test>
 
-		<api.version>3.0.0-M2</api.version>
-		<maven.version>2.2.1</maven.version>
 		<junit.version>5.4.0-RC2</junit.version>
 		<junit.platform.version>1.4.0-RC2</junit.platform.version>
 		<site.name>restrict-imports-enforcer-rule</site.name>
@@ -98,6 +96,32 @@
 	</dependencies>
 	<build>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>restrict-imports-enforcer-rule</artifactId>
+                                    <version>${version.under.test}</version>
+                                    <classifier>tests</classifier>
+                                    <type>test-jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 			<plugin>
 				<artifactId>maven-invoker-plugin</artifactId>
 				<version>3.1.0</version>
