@@ -10,15 +10,16 @@
 	</parent>
 
 	<groupId>de.skuzzle.enforcer</groupId>
-	<artifactId>restrict-imports-enforcer-rule</artifactId>
+	<artifactId>restrict-imports-enforcer-rule-jdk-tests</artifactId>
 	<version>0.17.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Restrict Imports Enforcer Rule</name>
-	<description>Bans imports of specified classes/packages</description>
+	<name>Restrict Imports Enforcer Rule tests for JDKs</name>
 
 	<properties>
 		<coveralls.skip>false</coveralls.skip>
+        
+        <version.under.test>0.16.0</version.under.test>
 
 		<api.version>3.0.0-M2</api.version>
 		<maven.version>2.2.1</maven.version>
@@ -34,35 +35,13 @@
 	</scm>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
-		</dependency>
-		<!-- Google -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>27.0-jre</version>
-		</dependency>
-
-		<!-- Maven -->
-		<dependency>
-			<groupId>org.apache.maven.enforcer</groupId>
-			<artifactId>enforcer-api</artifactId>
-			<version>${api.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
 		<!-- Test -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>restrict-imports-enforcer-rule</artifactId>
+            <version>${version.under.test}</version>
+            <scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
@@ -118,53 +97,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.1.1</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.apache.maven.shared</groupId>
-                            <artifactId>maven-dependency-analyzer</artifactId>
-                            <version>1.11.1</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M3</version>
-                    <configuration>
-                        <forkCount>0</forkCount>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.0.0-M3</version>
-                    <configuration>
-                        <forkCount>0</forkCount>
-                    </configuration>
-                </plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
-			<plugin>
-				<groupId>org.eluder.coveralls</groupId>
-				<artifactId>coveralls-maven-plugin</artifactId>
-				<configuration>
-					<jacocoReports>
-						<jacocoReport>${project.reporting.outputDirectory}/jacoco/jacoco.xml</jacocoReport>
-						<jacocoReport>${project.reporting.outputDirectory}/jacoco-it/jacoco.xml</jacocoReport>
-					</jacocoReports>
-				</configuration>
-			</plugin>
 			<plugin>
 				<artifactId>maven-invoker-plugin</artifactId>
 				<version>3.1.0</version>
@@ -195,25 +128,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<!-- package java doc into jar file -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
-
-					<!-- package sources into jar file -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
