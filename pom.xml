@@ -19,7 +19,7 @@
 	<properties>
 		<coveralls.skip>false</coveralls.skip>
         
-        <version.under.test>0.16.0</version.under.test>
+        <version.under.test>0.18.0</version.under.test>
 
         <junit.version>5.3.0-M1</junit.version>
 		<junit.platform.version>1.3.0-M1</junit.platform.version>
