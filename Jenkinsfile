@@ -69,11 +69,7 @@ void testAgainstJdk(version) {
 
     stage("Test against JDK $version") {
         script {
-            try {
-                sh "mvn integration-test -Dmaven.compiler.release=$version"
-            } catch (err) {
-                currentBuild.result = 'FAILURE'
-            }
+            sh "mvn integration-test -Dmaven.compiler.release=$version"
         }
     }
 }
