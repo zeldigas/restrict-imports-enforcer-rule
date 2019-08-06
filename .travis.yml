@@ -3,10 +3,6 @@ language: java
 before_script:
 - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 
-cache:
-  directories:
-  - $HOME/.m2
-
 jobs:
   include:
   - stage: ☕ jdk.java.net - Java Development Kit builds, from Oracle
