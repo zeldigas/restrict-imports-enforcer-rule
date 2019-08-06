@@ -17,6 +17,7 @@
 	<name>Restrict Imports Enforcer Rule tests for JDKs</name>
 
 	<properties>
+        <failOnWarning>false</failOnWarning>
 		<coveralls.skip>false</coveralls.skip>
         
         <version.under.test>1.0.0</version.under.test>
