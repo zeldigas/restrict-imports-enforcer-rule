@@ -1,4 +1,5 @@
 language: java
+
 before_script:
 - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
 
@@ -11,6 +12,6 @@ jobs:
   - stage: ☕ jdk.java.net - Java Development Kit builds, from Oracle
     env: JDK=ea
     script: source ./install-jdk.sh --verbose --feature ea
-    
-script:
-  - mvn clean verify
+  - stage: JDK 14
+    env: JDK=14
+    script: source ./install-jdk.sh --feature 14
