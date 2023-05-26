@@ -307,7 +307,11 @@
                                 <pomInclude>**/pom.xml</pomInclude>
                                 <!-- Include sub directories -->
                             </pomIncludes>
-                            <parallelThreads>2C</parallelThreads>
+
+                            <!-- Disable parallel execution for now as tests randomly fail -->
+                            <!-- See also: https://github.com/skuzzle/restrict-imports-enforcer-rule/issues/73 -->
+                            <!-- <parallelThreads>2C</parallelThreads> -->
+
                             <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
                             <mavenOpts>${argLine}</mavenOpts>
                         </configuration>
